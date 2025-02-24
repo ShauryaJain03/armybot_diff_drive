@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bot">
+
+    <ros2_control name="RobotSystem" type="system">
+
+        <!-- ros2_control Gazebo -->
+        <!-- ROS 2 Humble -->
+        <hardware>
+            <plugin>ign_ros2_control/IgnitionSystem</plugin>
+        </hardware>
+    
+        <!-- ros2_control Common Interfaces -->
+        <!-- Front right wheel -->
+        <joint name="wheel_front_right_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" /> 
+        </joint>
+
+        <!-- Front left wheel -->
+        <joint name="wheel_front_left_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+        
+        <!-- Back right wheel -->
+        <joint name="wheel_back_right_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" /> 
+        </joint>
+
+        <!-- Back left wheel -->
+        <joint name="wheel_back_left_joint">
+            <command_interface name="velocity">
+              <param name="min">-1</param>
+              <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+
+        
+        
+    </ros2_control>
+
+</robot>
