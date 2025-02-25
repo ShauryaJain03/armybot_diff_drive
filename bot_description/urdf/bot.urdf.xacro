@@ -342,13 +342,23 @@
 
     <gazebo>
         <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-              <parameters>
-                $(find bot_controller)/config/bot_controller.yaml
-              </parameters>
+              
         </plugin>
         <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu"></plugin>
         <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
         <render_engine>ogre2</render_engine>
+      </plugin>
+
+      <plugin filename="ignition-gazebo-diff-drive-system" 
+        name="ignition::gazebo::systems::DiffDrive">
+        <left_joint>wheel_front_left_joint</left_joint>
+        <left_joint>wheel_back_left_joint</left_joint>
+        <right_joint>wheel_front_right_joint</right_joint>
+        <right_joint>wheel_back_right_joint</right_joint>
+        <wheel_separation>0.8</wheel_separation>
+        <wheel_radius>0.1</wheel_radius>
+        <odom_publish_frequency>50</odom_publish_frequency>
+        <topic>/cmd_vel</topic>
       </plugin>
 
       

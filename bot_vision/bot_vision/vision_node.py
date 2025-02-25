@@ -32,7 +32,7 @@ class QRFollower(Node):
         self.image_center_x = None
         self.max_linear_speed = 0.5
         self.max_angular_speed = 0.5
-        self.target_area_percent = 20.0 
+        self.target_area_percent = 12 
         
         self.frame_count = 0  # Process every 3rd frame
         self.previous_results = []  # Store last valid results
@@ -90,12 +90,24 @@ class QRFollower(Node):
             
             self.get_logger().info(f"QR detected: conf={max_conf:.2f}, x_error={x_error}, area={qr_area_percent:.1f}%")
             
-
+            if qr_area_percent > self.target_area_percent:
+                vel_cmd.linear.x = 0.0
+                vel_cmd.angular.z = 0.0
+                self.get_logger().info("Target reached, stopping")
+            else:
+                vel_cmd.linear.x = self.max_linear_speed
+                
+                vel_cmd.angular.z = -normalized_error * self.max_angular_speed
         
         img_msg = self.bridge.cv2_to_imgmsg(cv_image, "bgr8")
         self.image_publisher.publish(img_msg)
         
-
+        if qr_detected:
+            self.cmd_vel_publisher.publish(vel_cmd)
+            self.get_logger().debug(f"Sending vel cmd: linear={vel_cmd.linear.x:.2f}, angular={vel_cmd.angular.z:.2f}")
+        else:
+            stop_cmd = Twist()
+            self.cmd_vel_publisher.publish(stop_cmd)
 
 def main(args=None):
     rclpy.init(args=args)
