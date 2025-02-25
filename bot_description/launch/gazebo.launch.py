@@ -67,7 +67,8 @@ def generate_launch_description():
             "/image_raw@sensor_msgs/msg/Image[gz.msgs.Image",
             "/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo",
             "/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
-            "/odometry/wheels@nav_msgs/msg/Odometry@gz.msgs.Odometry",        ]
+            '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',            
+]
     )
 
     ros_gz_image_bridge = Node(

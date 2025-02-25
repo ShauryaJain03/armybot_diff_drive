@@ -34,8 +34,8 @@ class QRFollower(Node):
         self.max_angular_speed = 0.5
         self.target_area_percent = 12 
         
-        self.frame_count = 0  # Process every 3rd frame
-        self.previous_results = []  # Store last valid results
+        self.frame_count = 0 
+        self.previous_results = []  
         self.get_logger().info("QR Follower Node has started")
 
     def image_callback(self, msg):
@@ -50,9 +50,9 @@ class QRFollower(Node):
 
         if self.frame_count % 3 == 0:
             results = self.model(cv_image)
-            self.previous_results = results  # Store valid detection
+            self.previous_results = results  
         else:
-            results = self.previous_results  # Use last results
+            results = self.previous_results  
 
         self.frame_count += 1
         
