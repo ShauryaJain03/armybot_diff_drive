@@ -9,12 +9,12 @@
             <plugin>ign_ros2_control/IgnitionSystem</plugin>
         </hardware>
     
-        <!-- ros2_control Common Interfaces -->
+        <!-- ros2_control Common Interfaces --> 
         <!-- Front right wheel -->
         <joint name="wheel_front_right_joint">
             <command_interface name="velocity">
-              <param name="min">-1</param>
-              <param name="max">1</param>
+              <param name="min">-10</param>
+              <param name="max">10</param>
             </command_interface>
             <state_interface name="position" />
             <state_interface name="velocity" /> 
@@ -23,8 +23,8 @@
         <!-- Front left wheel -->
         <joint name="wheel_front_left_joint">
             <command_interface name="velocity">
-              <param name="min">-1</param>
-              <param name="max">1</param>
+              <param name="min">-10</param>
+              <param name="max">10</param>
             </command_interface>
             <state_interface name="position" />
             <state_interface name="velocity" />
@@ -33,8 +33,8 @@
         <!-- Back right wheel -->
         <joint name="wheel_back_right_joint">
             <command_interface name="velocity">
-              <param name="min">-1</param>
-              <param name="max">1</param>
+              <param name="min">-10</param>
+              <param name="max">10</param>
             </command_interface>
             <state_interface name="position" />
             <state_interface name="velocity" /> 
@@ -43,8 +43,8 @@
         <!-- Back left wheel -->
         <joint name="wheel_back_left_joint">
             <command_interface name="velocity">
-              <param name="min">-1</param>
-              <param name="max">1</param>
+              <param name="min">-10</param>
+              <param name="max">10</param>
             </command_interface>
             <state_interface name="position" />
             <state_interface name="velocity" />
