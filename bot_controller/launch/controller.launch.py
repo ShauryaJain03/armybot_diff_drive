@@ -15,16 +15,18 @@ def generate_launch_description():
         ],
     )
 
-    diff_drive_controller_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['bot_controller', '--controller-manager', '/controller_manager'],
-        output='screen'
-    )
 
+    wheel_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["bot_controller", 
+                   "--controller-manager", 
+                   "/controller_manager"
+        ],
+    )
     return LaunchDescription(
         [
             joint_state_broadcaster_spawner,
-            diff_drive_controller_spawner
+            wheel_controller_spawner
         ]
     )

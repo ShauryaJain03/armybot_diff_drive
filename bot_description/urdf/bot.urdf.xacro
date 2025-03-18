@@ -299,7 +299,7 @@
       <kp>500000.0</kp>
       <kd>10.0</kd>
       <minDepth>0.001</minDepth>
-      <maxVel>0.1</maxVel>
+      <maxVel>1</maxVel>
       <fdir1>1 0 0</fdir1>
     </gazebo>
 
@@ -309,7 +309,7 @@
       <kp>500000.0</kp>
       <kd>10.0</kd>
       <minDepth>0.001</minDepth>
-      <maxVel>0.1</maxVel>
+      <maxVel>1</maxVel>
       <fdir1>1 0 0</fdir1>
     </gazebo>
 
@@ -319,7 +319,7 @@
       <kp>500000.0</kp>
       <kd>10.0</kd>
       <minDepth>0.001</minDepth>
-      <maxVel>0.1</maxVel>
+      <maxVel>1</maxVel>
       <fdir1>1 0 0</fdir1>
     </gazebo>
 
@@ -329,13 +329,13 @@
       <kp>500000.0</kp>
       <kd>10.0</kd>
       <minDepth>0.001</minDepth>
-      <maxVel>0.1</maxVel>
+      <maxVel>1</maxVel>
       <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo>
         <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-              
+          <parameters></parameters>
         </plugin>
         <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu"></plugin>
         <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
@@ -348,20 +348,26 @@
         <left_joint>wheel_back_left_joint</left_joint>
         <right_joint>wheel_front_right_joint</right_joint>
         <right_joint>wheel_back_right_joint</right_joint>
+
         <wheel_separation>0.8</wheel_separation>
         <wheel_radius>0.1</wheel_radius>
+        
         <odom_publish_frequency>50</odom_publish_frequency>
         <topic>/cmd_vel</topic>
+
+    <!-- Make sure you have these exact parameters -->
         <publish_odom>true</publish_odom>
         <publish_odom_tf>true</publish_odom_tf>
-        <publish_wheel_tf>true</publish_wheel_tf>
         <odom_topic>odom</odom_topic>
         <frame_id>odom</frame_id>
         <child_frame_id>base_link</child_frame_id>
+        
+        <!-- Add this parameter -->
+        <tf_topic>tf</tf_topic>
       </plugin>
-
       
     </gazebo>
+
 
 
 </robot>

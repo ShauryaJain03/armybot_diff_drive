@@ -37,9 +37,19 @@ def generate_launch_description():
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
+        output='screen',
         parameters=[{"robot_description": robot_description,
                      "use_sim_time": True}]
     )
+
+
+    joint_state_pub = Node(
+            package='joint_state_publisher',
+            executable='joint_state_publisher',
+            name='joint_state_publisher',
+            output='screen',
+        )
+        
 
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -66,9 +76,10 @@ def generate_launch_description():
             "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
             "/image_raw@sensor_msgs/msg/Image[gz.msgs.Image",
             "/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo",
-            "/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist",
-            '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',            
-]
+            "/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist",
+            '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',         
+            '/tf@tf2_msgs/msg/TFMessage@ignition.msgs.Pose_V'   
+        ]
     )
 
     ros_gz_image_bridge = Node(
@@ -85,4 +96,5 @@ def generate_launch_description():
         gz_spawn_entity,
         ros_gz_image_bridge,
         gz_ros2_bridge,
+        joint_state_pub
     ])
