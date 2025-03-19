@@ -14,7 +14,7 @@ find_package(ament_cmake REQUIRED)
 
 
 install(
-  DIRECTORY launch rviz urdf worlds
+  DIRECTORY launch rviz urdf worlds models photos
   DESTINATION share/${PROJECT_NAME}
 )
 
