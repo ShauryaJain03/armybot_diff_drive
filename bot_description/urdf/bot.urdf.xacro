@@ -15,7 +15,7 @@
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="base_link"/>
-    <origin xyz="0.0 0.0 0.15" rpy="0.0 0.0 3.14159"/>  <!-- Add 180-degree rotation -->
+    <origin xyz="0.0 0.0 0.15" rpy="0.0 0.0 3.14159"/>  
   </joint>
 
   <link name="base_link">
@@ -61,7 +61,7 @@
     <collision>
     
       <geometry>
-          <cylinder radius="0.10" length="0.1"/>
+          <sphere radius="0.10"/>
       </geometry>
     </collision>
   </link>
@@ -85,7 +85,7 @@
 
     <collision>
       <geometry>
-          <cylinder radius="0.10" length="0.1"/>
+          <sphere radius="0.10" />
       </geometry>
     </collision>
   </link>
@@ -109,7 +109,7 @@
 
     <collision>
       <geometry>
-          <cylinder radius="0.10" length="0.1"/>
+          <sphere radius="0.10" />
       </geometry>
     </collision>
   </link>
@@ -135,7 +135,7 @@
 
     <collision>
       <geometry>
-          <cylinder radius="0.10" length="0.1"/>
+          <sphere radius="0.10"/>
       </geometry>
     </collision>
   </link>
