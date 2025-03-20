@@ -4,16 +4,7 @@
   <xacro:include filename="bot_ros2_control.xacro" />
 
 
-    <joint name="base_footprint_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="base_footprint"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-    </joint>
-
-    <link name="base_footprint">
-    </link>
-
-  <link name="base_link">
+  <link name="base_footprint">
       <inertial>
             <mass value="2" />
             <inertia ixx="0.04" ixy="0.0" ixz="0" 
@@ -22,13 +13,13 @@
   </link>
     
   <joint name="base_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="chassis"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
     <origin xyz="0.0 0.0 0.15" rpy="0.0 0.0 0.0"/>
   </joint>
 
 
-  <link name="chassis">
+  <link name="base_link">
     <visual>
       <geometry>
           <box size=".8 0.7 0.2"/>
@@ -78,7 +69,7 @@
 
   <joint name="wheel_front_right_joint" type="continuous">
     <origin xyz="0.25 0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="wheel_front_right"/>
     <axis xyz="0.0 0.0 1.0"/>
   </joint>
@@ -109,7 +100,7 @@
 
   <joint name="wheel_front_left_joint" type="continuous">
     <origin xyz="0.25 -0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="wheel_front_left"/>
     <axis xyz="0.0 0.0 1.0"/>
 
@@ -141,7 +132,7 @@
 
   <joint name="wheel_back_right_joint" type="continuous">
     <origin xyz="-0.25 0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="wheel_back_right"/>
     <axis xyz="0.0 0.0 1.0"/>
 
@@ -173,7 +164,7 @@
 
   <joint name="wheel_back_left_joint" type="continuous">
     <origin xyz="-0.25 -0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="wheel_back_left"/>
     <axis xyz="0.0 0.0 1.0"/>
 
@@ -206,7 +197,7 @@
 
   <joint name="camera_joint" type="fixed">
     <origin xyz="-0.43 0 0.0" rpy="0 0.0 3.14"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="rgb_camera"/>
     <axis xyz="0.0 0 0"/>
 
@@ -265,7 +256,7 @@
 
   <joint name="laser_joint" type="fixed">
     <origin xyz="0 0 0.15" rpy="0 0.0 3.14"/>
-    <parent link="chassis"/>
+    <parent link="base_link"/>
     <child link="laser_link"/>
     <axis xyz="0.0 0.0 1.0"/>
 
@@ -350,29 +341,6 @@
         <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
         <render_engine>ogre2</render_engine>
       </plugin>
-<!--      <plugin filename="ignition-gazebo-diff-drive-system" 
-        name="ignition::gazebo::systems::DiffDrive">
-        <left_joint>wheel_front_left_joint</left_joint>
-        <left_joint>wheel_back_left_joint</left_joint>
-        <right_joint>wheel_front_right_joint</right_joint>
-        <right_joint>wheel_back_right_joint</right_joint>
-
-        <wheel_separation>0.8</wheel_separation>
-        <wheel_radius>0.1</wheel_radius>
-        
-        <odom_publish_frequency>50</odom_publish_frequency>
-        <topic>/cmd_vel</topic>
-
-        <publish_odom>true</publish_odom>
-        <publish_odom_tf>true</publish_odom_tf>
-        <odom_topic>odom</odom_topic>
-        <frame_id>odom</frame_id>
-        <child_frame_id>base_link</child_frame_id>
-        
-        <tf_topic>tf</tf_topic>
-      </plugin>
-       -->
-
     </gazebo>
 
 
