@@ -13,3 +13,6 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/bo
 
 computer vision node - 
 ros2 run bot_vision vision_node
+
+slam with slam_toolbox - 
+ros2 launch slam_toolbox online_async_launch.py file:=./src/bot_description/config/mapper_params_online_async.yaml use_sim_time:=true

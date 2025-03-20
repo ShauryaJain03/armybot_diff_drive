@@ -15,9 +15,8 @@
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="base_link"/>
-    <origin xyz="0.0 0.0 0.15" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.15" rpy="0.0 0.0 3.14159"/>  <!-- Add 180-degree rotation -->
   </joint>
-
 
   <link name="base_link">
     <visual>
@@ -67,13 +66,6 @@
     </collision>
   </link>
 
-  <joint name="wheel_front_right_joint" type="continuous">
-    <origin xyz="0.25 0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="base_link"/>
-    <child link="wheel_front_right"/>
-    <axis xyz="0.0 0.0 1.0"/>
-  </joint>
-
   <link name="wheel_front_left">
     <inertial>
             <mass value="2" />
@@ -97,14 +89,6 @@
       </geometry>
     </collision>
   </link>
-
-  <joint name="wheel_front_left_joint" type="continuous">
-    <origin xyz="0.25 -0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="base_link"/>
-    <child link="wheel_front_left"/>
-    <axis xyz="0.0 0.0 1.0"/>
-
-  </joint>
 
 <link name="wheel_back_right">
     <inertial>
@@ -130,13 +114,7 @@
     </collision>
   </link>
 
-  <joint name="wheel_back_right_joint" type="continuous">
-    <origin xyz="-0.25 0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="base_link"/>
-    <child link="wheel_back_right"/>
-    <axis xyz="0.0 0.0 1.0"/>
 
-  </joint>
 
   <link name="wheel_back_left">
     <inertial>
@@ -162,13 +140,7 @@
     </collision>
   </link>
 
-  <joint name="wheel_back_left_joint" type="continuous">
-    <origin xyz="-0.25 -0.4 -0.05" rpy="1.57 0.0 0.0"/>
-    <parent link="base_link"/>
-    <child link="wheel_back_left"/>
-    <axis xyz="0.0 0.0 1.0"/>
 
-  </joint>
 
   <link name="rgb_camera">
     <inertial>
@@ -293,44 +265,78 @@
   </gazebo>
 
 
+    <joint name="wheel_front_right_joint" type="continuous">
+    <origin xyz="-0.25 0.4 -0.05" rpy="1.57 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="wheel_front_right"/>
+    <axis xyz="0.0 0.0 1.0"/>
+  </joint>
+
+
+  <joint name="wheel_front_left_joint" type="continuous">
+    <origin xyz="-0.25 -0.4 -0.05" rpy="1.57 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="wheel_front_left"/>
+    <axis xyz="0.0 0.0 1.0"/>
+
+  </joint>
+
+    <joint name="wheel_back_right_joint" type="continuous">
+    <origin xyz="0.25 0.4 -0.05" rpy="1.57 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="wheel_back_right"/>
+    <axis xyz="0.0 0.0 1.0"/>
+
+  </joint>
+
+  <joint name="wheel_back_left_joint" type="continuous">
+    <origin xyz="0.25 -0.4 -0.05" rpy="1.57 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="wheel_back_left"/>
+    <axis xyz="0.0 0.0 1.0"/>
+
+  </joint>
+
+
+
     <gazebo reference="wheel_front_right">
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
-      <kp>500000.0</kp>
-      <kd>10.0</kd>
-      <minDepth>0.001</minDepth>
-      <maxVel>1</maxVel>
-      <fdir1>1 0 0</fdir1>
+    <mu1>1000000000000000.0</mu1>
+    <mu2>1000000000000000.0</mu2>
+    <kp>1000000000000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="wheel_front_left">
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
-      <kp>500000.0</kp>
-      <kd>10.0</kd>
-      <minDepth>0.001</minDepth>
-      <maxVel>1</maxVel>
-      <fdir1>1 0 0</fdir1>
+    <mu1>1000000000000000.0</mu1>
+    <mu2>1000000000000000.0</mu2>
+    <kp>1000000000000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="wheel_back_right">
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
-      <kp>500000.0</kp>
-      <kd>10.0</kd>
-      <minDepth>0.001</minDepth>
-      <maxVel>1</maxVel>
-      <fdir1>1 0 0</fdir1>
+    <mu1>1000000000000000.0</mu1>
+    <mu2>1000000000000000.0</mu2>
+    <kp>1000000000000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="wheel_back_left">
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
-      <kp>500000.0</kp>
-      <kd>10.0</kd>
-      <minDepth>0.001</minDepth>
-      <maxVel>1</maxVel>
-      <fdir1>1 0 0</fdir1>
+    <mu1>1000000000000000.0</mu1>
+    <mu2>1000000000000000.0</mu2>
+    <kp>1000000000000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo>
