@@ -95,6 +95,9 @@ def generate_launch_description():
         arguments=["/camera/image_raw"]
     )
 
+
+
+
     return LaunchDescription([
         model_arg,
         gazebo_resource_path,
