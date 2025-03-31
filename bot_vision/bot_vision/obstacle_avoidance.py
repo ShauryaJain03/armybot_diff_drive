@@ -65,9 +65,9 @@ class QRFollowerWithObstacleAvoidance(Node):
     def scan_callback(self, scan_data):
         # Process LiDAR scan data
         self.regions = {
-            'left':   min(min(scan_data.ranges[0:160]), 100),
-            'mid':    min(min(scan_data.ranges[160:200]), 100),
-            'right':  min(min(scan_data.ranges[200:360]), 100),
+            'left':   min(min(scan_data.ranges[0:60]), 100),
+            'mid':    min(min(scan_data.ranges[60:300]), 100),
+            'right':  min(min(scan_data.ranges[300:360]), 100),
         }
         
         if (self.regions['right'] < self.safe_distance or 
