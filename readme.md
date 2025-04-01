@@ -57,7 +57,7 @@ This project implements a 4 Wheel Differential Drive QR Code Following Bot with 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+### Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -65,17 +65,17 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!-- LICENSE -->
-## License
+### License
 
 Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 
 <!-- CONTACT -->
-## Contact
+### Contact
 
 Shaurya Jain - Reach me at jainshaurya.sj@gmail.com
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+### Acknowledgments
 
 Centre of Intelligent Robotics IIITA, Dr. Surya Prakash, Mr. Rohit Kumar
