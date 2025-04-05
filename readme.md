@@ -59,10 +59,12 @@ This project implements a 4 Wheel Differential Drive QR Code Following Bot with 
 <!-- USAGE EXAMPLES -->
 ### Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Insert images
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+<!-- Contributing -->
+### Contributing
 
+This repository is not open to contributions.
 
 <!-- CONTACT -->
 ### Contact
