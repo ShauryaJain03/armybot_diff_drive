@@ -4,7 +4,7 @@ visulise urdf in rviz w/o launch file -
 ros2 launch urdf_tutorial display.launch.py model:=/home/shaurya/armybot_diff/src/bot_description/urdf/bot.urdf.xacro
 
 launch gazebo sim in custom world - 
-ros2 launch bot_description gazebo.launch.py world_name={test_new/small_house/small_warehouse/empty/room_with_walls}
+ros2 launch bot_description gazebo.launch.py world_name:={test_new/small_house/small_warehouse/empty/room_with_walls}
 
 launch keyboard teleop with ros2_control - configured ros2_control, outputs command velocities on bot_controller/cmd_vel_unstamped
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/bot_controller/cmd_vel_unstamped

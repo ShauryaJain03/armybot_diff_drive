@@ -86,7 +86,10 @@ def generate_launch_description():
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
             "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
-        ]
+            "/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked",
+            "/navsat@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat",
+        ],
+        output="screen"
     )
 
     ros_gz_image_bridge = Node(

@@ -234,7 +234,8 @@
 
   </joint>
 
-  <gazebo reference="laser_link">
+    <!-- 2D LIDAR-->  
+<!--  <gazebo reference="laser_link">
     <sensor name="lidar" type="gpu_lidar">
       <always_on>true</always_on>
       <visualize>true</visualize>
@@ -262,8 +263,62 @@
         </noise>
       </lidar>
     </sensor>
+  </gazebo>--> 
+
+  <!-- velodyne vlp-32 3D lidar plugin-->
+  <gazebo reference="laser_link">
+    <sensor name="lidar" type="gpu_lidar">
+      <update_rate>10</update_rate>
+      <topic>scan</topic>
+      <gz_frame_id>laser_link</gz_frame_id>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14156</min_angle>
+            <max_angle>3.14156</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>32</samples>
+            <min_angle>-0.5353</min_angle>
+            <max_angle>0.1862</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+        </noise>
+        <frame_id>scan_link</frame_id>
+      </lidar>
+      <always_on>1</always_on>
+      <visualize>true</visualize>
+    </sensor>
   </gazebo>
 
+  <joint name="navsat_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="navsat_link" />
+  </joint>
+
+  <link name="navsat_link">
+  </link>
+
+  <gazebo reference="navsat_link">
+    <sensor name="navsat" type="navsat">
+      <always_on>1</always_on>
+      <update_rate>1</update_rate>
+      <topic>navsat</topic>
+      <gz_frame_id>navsat_link</gz_frame_id>
+    </sensor>
+  </gazebo>
 
     <joint name="wheel_front_right_joint" type="continuous">
     <origin xyz="-0.25 0.4 -0.05" rpy="1.57 0.0 0.0"/>
@@ -297,7 +352,7 @@
 
   </joint>
 
-
+ 
 
     <gazebo reference="wheel_front_right">
     <mu1>1000000000000000.0</mu1>
@@ -347,6 +402,19 @@
         <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
         <render_engine>ogre2</render_engine>
       </plugin>
+        <plugin
+        filename="gz-sim-navsat-system"
+        name="gz::sim::systems::NavSat">
+      </plugin>
+      <!-- Set the coordinates for the world origin -->
+      <spherical_coordinates>
+        <surface_model>EARTH_WGS84</surface_model>
+        <world_frame_orientation>ENU</world_frame_orientation>
+        <latitude_deg>47.478950</latitude_deg>
+        <longitude_deg>19.057785</longitude_deg>
+        <elevation>0</elevation>
+        <heading_deg>0</heading_deg>
+      </spherical_coordinates>
     </gazebo>
 
 

@@ -170,7 +170,7 @@ class QRFollowerWithObstacleAvoidance(Node):
                 elapsed_time = current_time - self.obstacle_state['turn_start_time']
                 
                 if elapsed_time < self.obstacle_state['turn_duration']:
-                    vel_cmd.angular.z = 0.5 * self.obstacle_state['turn_direction']
+                    vel_cmd.angular.z = 0.3 * self.obstacle_state['turn_direction']
                     vel_cmd.linear.x = 0.8
                     self.get_logger().info(f"Turning to avoid obstacle: direction={self.obstacle_state['turn_direction']}")
                 else:
