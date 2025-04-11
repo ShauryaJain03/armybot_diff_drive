@@ -37,6 +37,14 @@ def generate_launch_description():
         value_type=str
     )
 
+    rviz_node = Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2",
+        output="screen",
+        arguments=["-d", os.path.join(bot_description, "rviz", "gps.rviz")],
+    )
+
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -87,6 +95,7 @@ def generate_launch_description():
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
             "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
             "/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked",
+            "/navsat@sensor_msgs/msg/NavSatFix@gz.msgs.NavSat",
         ],
         output="screen"
     )
@@ -107,6 +116,7 @@ def generate_launch_description():
         gazebo,
         gz_spawn_entity,
         world_name_arg,
+        rviz_node,
         ros_gz_image_bridge,
         gz_ros2_bridge,
         joint_state_pub
